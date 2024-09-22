@@ -1,0 +1,48 @@
+{% extends "base.html"%}
+{% block title %} Products Page
+{% endblock %}
+
+{% block content%}
+
+    
+
+    <ul>
+
+        {% for product in products %}
+            <li>{{product}} <button onclick="deleteProduct({{product.id}})">Delete</button> 
+                {% if current_user.is_authenticated %}
+                    <a href= "{{url_for('products.details', id = product.id)}}">Details</a>
+                {% else %}
+                    <button onclick="Loginalert()">Details</button> 
+                {% endif%}
+            </li>
+
+        {% endfor %}
+    </ul>
+
+    <script type="text/javascript">
+        function Loginalert() {
+            alert("Bro, you have to login first!");
+        }
+
+        function deleteProduct(id){
+            fetch('{{url_for("products.delete", id=id)}}'+ id,{
+                method: 'DELETE'
+            })
+            .then(response => {
+                if(response.ok){
+                    window.location.reload();
+                }
+                else{
+                    console.error('Failed to delete: ', id);
+                }
+            })
+            .catch(error => {
+                console.error('Error during fetching: ', error);
+            });
+        }
+    </script>
+
+
+
+{% endblock %}

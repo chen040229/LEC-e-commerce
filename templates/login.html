@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %} Login Page {% endblock %}
+
+{% block content%} 
+    <div class="container">
+         <h1> Login</h1>
+        <form class = "form-control" action="{{url_for('login')}}" method="POST">
+            <input class = "form-control mb-3" type="text" name="username" placeholder="Username" required=required><br>
+            <input class = "form-control mb-3" type="text" name="password" placeholder="Password" required=required><br>
+            <input type="submit" value="Login">
+            <h3>New to this site?</h3>
+            <a class="btn btn-sm btn-secondary" href="{{url_for('signup')}}"> Signup </a>
+
+        </form>
+
+
+
+
+    </div>
+
+
+   
+{% endblock %}

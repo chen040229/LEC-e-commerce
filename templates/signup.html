@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %} Signup Page {% endblock %}
+
+{% block content%} 
+    <div class="container">
+        <h1>Signup</h1>
+        <form class="form-control mb-4" action="{{url_for('signup')}}"  method="POST">
+            <input class = "form-control mb-3" type="text" name="username" placeholder="Username" required=required><br>
+            <input class = "form-control mb-3" type="text" name="email" placeholder="Email" required=required><br>
+            <input class = "form-control mb-3" type="text" name="password" placeholder="Password" required=required><br>
+            <input class = "form-control mb-3" type="text" name="confirmpassword" placeholder="ComfirmPassword"required=required> <br>
+            <input class = "mb-1" type="submit" value="Create">
+            <h3>Already have an account?</h3>
+            <a class="btn btn-sm btn-secondary" href="{{url_for('login')}}"> Login </a>
+        </form>
+    </div>
+    
+{% endblock %}

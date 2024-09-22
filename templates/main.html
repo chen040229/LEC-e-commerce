@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}
+     Mainpage
+{% endblock %}
+
+
+{% block content%}
+
+
+    <h1>Hello! Welcome to LEC!</h1>
+    
+    {% if current_user.is_authenticated%}
+        <p>hello! {{current_user.username}}</p>
+    {% endif %}
+
+    <a href = "{{url_for('clear')}}"> Clear users</a><br>
+
+    
+    
+{% endblock %}
